@@ -1,6 +1,6 @@
-# Node.js + FastAPI Hello World App
+# Dataconnect Node.js FastAPI App
 
-A simple hello world template that demonstrates how to build full-stack applications using Node.js (React) frontend with FastAPI backend for Databricks Apps.
+A full-stack data connectivity application that demonstrates how to build applications using Node.js (React) frontend with FastAPI backend for Databricks Apps. This app showcases connecting to multiple data sources and visualizing data.
 
 ## Architecture
 
@@ -8,9 +8,17 @@ A simple hello world template that demonstrates how to build full-stack applicat
 React Frontend (TypeScript + Vite)
     ↓ API calls
 FastAPI Backend (Python)
-    ↓ Serves static files + API
+    ↓ Data source connections & API
 Databricks Apps
 ```
+
+## Features
+
+- **Multiple Data Source Support**: Connect to PostgreSQL, Databricks SQL, MongoDB, Kafka, and more
+- **Real-time Data Visualization**: Interactive charts showing data from connected sources
+- **Statistics Dashboard**: Overview of connected sources and total records
+- **Modern UI**: Beautiful, responsive interface with status indicators
+- **API Documentation**: Auto-generated API docs with FastAPI
 
 ## Setup
 
@@ -49,9 +57,27 @@ uvicorn backend.main:app --host 0.0.0.0 --port 8000
 
 ## Databricks Apps Deployment
 
-Configured for Databricks Apps with `app.yaml`. Uses `DATABRICKS_APP_PORT` environment variable automatically.
+Configured for Databricks Apps with `app.yaml`. Deploys to:
+`/Workspace/Users/pawanpreet.sangari@databricks.com/databricks_apps/`
 
-## API
+Uses `DATABRICKS_APP_PORT` environment variable automatically.
 
-- `GET /api/hello` - Hello world message
+## API Endpoints
+
+- `GET /api/hello` - Welcome message
+- `GET /api/health` - Health check with timestamp
+- `GET /api/datasources` - List all connected data sources
+- `GET /api/datasources/{id}` - Get specific data source details
+- `GET /api/datasources/{id}/data` - Get sample data from a data source
+- `GET /api/stats` - Get overall statistics
 - `GET /docs` - FastAPI interactive documentation
+
+## Data Sources
+
+The app includes mock connections to:
+- **Customer Database** (PostgreSQL)
+- **Sales Analytics** (Databricks SQL)
+- **Product Inventory** (MongoDB)
+- **User Events Stream** (Kafka)
+
+Click on any data source card to visualize its data.
